@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <style>
+        #counter {
+            font-family: 'YellowTail', cursive;
+            font-size: 40pt;
+            text-align: center;
+            margin-top: -20pt;
+            /*min-width: 640px;*/
+        }
+        #main {
+            /*min-width: 640px;*/
+        }
+        #book-select {
+            text-align-last: center;
+        }
+        #book-select option {
+            font-size: 20pt;
+        }
+        #submit-button {
+            font-size: 25pt;
+        }
+        #guess-tally {
+            font-size: 33pt;
+            word-break: break-all;
+            text-align: center;
+            height: 40pt;
+            overflow: hidden;
+        }
+        #main img {
+            max-width: 100%;
+            max-height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+    </style>
+    </head>
+    <body>
+        <div id=main>
+            <img src='data:image/png;base64,{{ image_base64 }}' />
+            <div id="counter">Calculating Time</div>
+            <div id="reveal" class="form-group">
+                <select id="book-select" class="form-control" size=4>
+                    <option selected value="c00d602fe381288855f6b400ab6c77e7">Amos</option>
+                    <option value="433954d85eb30629a97505247f7321dc">I Chronicles</option>
+                    <option value="280a60b79aae6b7bff92c741a8b6e6f9">II Chronicles</option>
+                    <option value="e16897400dd1fa4a8f699d2b2e17cc2c">Colossians</option>
+                    <option value="2fe49ec78c684e8e34a5da67db550f2c">I Corinthians</option>
+                    <option value="3bd3c56e48ba5b48b1fb3ba8d73d572b">II Corinthians</option>
+                    <option value="262031397020fd8df478ec13b4b096c5">Daniel</option>
+                    <option value="fc40272ee60011e0b27911c6a9b82e9a">Deuteronomy</option>
+                    <option value="90d3f2a652fad0d56aa3076d0f2f62be">Ecclesiastes</option>
+                    <option value="964add4a8b79b57348cee7ad9f125a18">Ephesians</option>
+                    <option value="2b1d226f59ef0b094ccb49ba1b095394">Esther</option>
+                    <option value="0cdf051c93865faa15cbc5cd3d2b69fb">Exodus</option>
+                    <option value="9c21900bc9b7ccaa68c9166ddc0d3014">Ezekiel</option>
+                    <option value="dc53785d25a3e11fb45aa5dbc946e293">Ezra</option>
+                    <option value="4c65685a0a1647c2abdf10d8023d7a42">Full Bible</option>
+                    <option value="265eba480c067b1ced4f25b4d0815e87">Galatians</option>
+                    <option value="411f3239ffbefd44ebd08ac9eaec6489">Genesis</option>
+                    <option value="88f7ae40918a94a708df713bcaf26626">Habakkuk</option>
+                    <option value="b7daf17893fe6e8ed6d32b307175758a">Haggai</option>
+                    <option value="28e03b6e834efd8e8cce67baecb17500">Hebrews</option>
+                    <option value="027f557078da31b70bdceb26d54e9ee0">Hosea</option>
+                    <option value="76c269a0dfa33fba379e29eed2ee0521">Isaiah</option>
+                    <option value="d52e32f3a96a64786814ae9b5279fbe5">James</option>
+                    <option value="e0d1bfde0c2da91753f73c54bb4b74c5">Jeremiah</option>
+                    <option value="cf51066f49e517f274b8173cc265c60b">Job</option>
+                    <option value="da64a1bc2c9a53dd1cdb6846103cd2de">Joel</option>
+                    <option value="61409aa1fd47d4a5332de23cbf59a36f">John</option>
+                    <option value="056fd4a5d89be879b47b02296bc3a2b5">I John</option>
+                    <option value="27ed83d583e457b0a6ca17e9e3cc1e44">II John</option>
+                    <option value="16649369b551ffe3463f9c9963c6e5cc">III John</option>
+                    <option value="ae8989a8f472814e65123b137ab29d1f">Jonah</option>
+                    <option value="85b103482a20682da703aa388933a6d8">Joshua</option>
+                    <option value="229331fbe50e5f7296e88fc548d4534f">Jude</option>
+                    <option value="d3f20c9854b085e4d004e75c61ec26d8">Judges</option>
+                    <option value="9eae202e6ea972fa142aacb77c8f5270">I Kings</option>
+                    <option value="4cb5af220706732327289acd6b3af4a5">II Kings</option>
+                    <option value="47526f0d96d4d615944da9028f707dcc">Lamentations</option>
+                    <option value="bfe2abcd3abf7db1766799c6d5971272">Leviticus</option>
+                    <option value="b21dfb148d20b1febdd8d86417f925c1">Luke</option>
+                    <option value="12071ae292a0192ca5149099089bcbcc">Malachi</option>
+                    <option value="b82a9a13f4651e9abcbde90cd24ce2cb">Mark</option>
+                    <option value="64730ca35ed9274ff6aa8a719407fe53">Matthew</option>
+                    <option value="f0c014f660edfba75f68145fe0670dcb">Micah</option>
+                    <option value="a978a4a109624bbd5e552c597494acee">Nahum</option>
+                    <option value="cafd6a9e554bce844b3fb415747a3abe">Names</option>
+                    <option value="6cab395d2a36b8a0d404292f21ee2d75">NASB</option>
+                    <option value="222194e9c4a4f9f42b44c72d7cc0c680">Nehemiah</option>
+                    <option value="cbebfa21dbe8e87e788d94a76f073807">Numbers</option>
+                    <option value="f048451b8fe68c0b70bc4a006fbecd4a">Obadiah</option>
+                    <option value="e4acd4ceffa7a7b69b2e49751d91263d">I Peter</option>
+                    <option value="cd328e11062892f488c82450b342a96a">II Peter</option>
+                    <option value="06f9e4db9076632e0c7294d6fda8ff1b">Philemon</option>
+                    <option value="38c91ae1de0efd650c7e1dc0c464f8b5">Philppians</option>
+                    <option value="8733dd8dee25126cf5ba8ed07290d863">Proverbs</option>
+                    <option value="0b6d443b27df3bf9855361724e9d0fe6">Psalms</option>
+                    <option value="2e77f901673403a0a2adaa9318093179">Revelation</option>
+                    <option value="29a673ce0a8e68c6cd6b13553bb61539">Romans</option>
+                    <option value="8e06843ec162b74a7902867dd4bca8c8">Ruth</option>
+                    <option value="a35c9f3edfce0ee07564701a2ba50983">I Samuel</option>
+                    <option value="2edba8b7af675ea0f43279d2670d9558">II Samuel</option>
+                    <option value="156f81c27d05d15751c80ff770edf45f">Song of Solomon</option>
+                    <option value="5d211adc6fe5af930441cfc887d5af9f">I Thessalonians</option>
+                    <option value="2f39d3dc950e5a781ca881b4d2d3c4a5">II Thesalonians</option>
+                    <option value="ddac0275ac26a1c79b0e52e34c0c7804">I Timothy</option>
+                    <option value="4b9fdec03e70d6cbaa0a7066c1b13f02">II Timothy</option>
+                    <option value="f71185951db8a1c8c166c45b001afd9a">Titus</option>
+                    <option value="6da724e30f3be7fd21f0a555d3ae01ac">Zechariah</option>
+                </select>
+                <button id="submit-button" type="button" class="btn btn-primary btn-lg btn-block">Check Guess!</button>
+                <div id="guess-tally"></div>
+
+            </div>
+        </div>
+        <script>
+            var bookHash = "{{ hashed_book_name }}"
+            var timeleft = 20 - (Math.floor((Date.now()/1000)) % 20);
+            var downloadTimer = setInterval(function(){
+              if(timeleft <= 0){
+                clearInterval(downloadTimer);
+                  getName(bookHash);
+                  clearMarkBox();
+              } else {
+                document.getElementById("counter").innerHTML = timeleft;
+              }
+              timeleft -= 1;
+            }, 1000);
+            function getName(currentHash, buttonPressed=0) {
+                if (currentHash != bookHash) {
+                    addWrongMark();
+                    return;
+                }
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("counter").innerHTML = this.responseText;
+                        if(buttonPressed) {
+                            addRightMark();
+                        } else {
+                            clearMarkBox();
+                        }
+                    }
+                };
+                xhttp.open("GET", "/ajax/getname?currentHash=" + currentHash, true);
+                xhttp.send();
+            }
+            document.getElementById('submit-button').onclick = function (){
+                var selectedOption = $("#book-select").val();
+                getName(selectedOption, 1);
+            };
+
+            function addWrongMark() {
+                $("#guess-tally").append("&#x274C;");
+            }
+            function addRightMark() {
+                $("#guess-tally").html("&#x2705;");
+            }
+            function clearMarkBox() {
+                $("#guess-tally").html("");
+            }
+        </script>
+    </body>
+</html>
